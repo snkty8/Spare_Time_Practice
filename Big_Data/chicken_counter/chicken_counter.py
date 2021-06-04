@@ -9,3 +9,5 @@ class Chicken_count(MRJob):
        yield key, sum(values)
 if __name__ == "__main__":
    Chicken_count.run()
+
+
