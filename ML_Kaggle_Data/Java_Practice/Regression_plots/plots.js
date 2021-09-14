@@ -209,23 +209,23 @@ for (var x = 2; x <= 15; x += 1) {
 //   {x:xValues, y:yValues, mode:"line"}
 // ];
 
-var data = [trace1 = {x:xArray, y:yArray, xaxis: 'x', yaxis: 'y', mode:"markers", title: "Women: Age Vs. Salary"},
-            {x:xValues, y:yValues, xaxis: 'x', yaxis: 'y', mode:"line", title: "Women: Age Vs. Salary"}, 
+var data = [trace1 = {x:xArray, y:yArray, xaxis: 'x', yaxis: 'y', mode:"markers", name: "Data points for Women: Age Vs. Salary"},
+            {x:xValues, y:yValues, xaxis: 'x', yaxis: 'y', mode:"line", name: "Linear Regression Trendline for Women: Age vs: Salary"}, 
 
-            trace2 = {x:xArray2, y:yArray2, xaxis: 'x2', yaxis: 'y2', mode:"markers"},
-            {x:xValues2, y:yValues2, xaxis: 'x2', yaxis: 'y2', mode:"line"},
+            trace2 = {x:xArray2, y:yArray2, xaxis: 'x2', yaxis: 'y2', mode:"markers", name: "Data points for Men: Age Vs. Salary"},
+            {x:xValues2, y:yValues2, xaxis: 'x2', yaxis: 'y2', mode:"line", name: "Linear Regression Trendline for Men: Age vs: Salary"},
 
-            trace3 = {x:xArray3, y:yArray3, xaxis: 'x3',yaxis: 'y3', mode:"markers"},
-            {x:xValues3, y:yValues3, xaxis: 'x3',yaxis: 'y3', mode:"line"},
+            trace3 = {x:xArray3, y:yArray3, xaxis: 'x3',yaxis: 'y3', mode:"markers", name : "Data points for Women: Formal Education Vs. Salary"},
+            {x:xValues3, y:yValues3, xaxis: 'x3',yaxis: 'y3', mode:"line", name: "Linear Regression Trendline for Women: Formal Education vs: Salary"},
 
-            trace4 = {x:xArray4, y:yArray4, xaxis: 'x4', yaxis: 'y4', mode:"markers"},
-            {x:xValues4, y:yValues4, xaxis: 'x4',yaxis: 'y4', mode:"line"},
+            trace4 = {x:xArray4, y:yArray4, xaxis: 'x4', yaxis: 'y4', mode:"markers", name: "Data points for Men: Formal Education Vs. Salary"},
+            {x:xValues4, y:yValues4, xaxis: 'x4',yaxis: 'y4', mode:"line", name: "Linear Regression Trendline for Men: Formal Education vs: Salary"},
 
-            trace5 = {x:xArray5, y:yArray5, xaxis: 'x5', yaxis: 'y5', mode:"markers"},
-            {x:xValues5, y:yValues5, xaxis: 'x5',yaxis: 'y5', mode:"line"}, 
+            trace5 = {x:xArray5, y:yArray5, xaxis: 'x5', yaxis: 'y5', mode:"markers", name: "Data points for Women: Years Coding Vs. Salary"},
+            {x:xValues5, y:yValues5, xaxis: 'x5',yaxis: 'y5', mode:"line", name: "Linear Regression Trendline for Women: Years Coding vs: Salary"}, 
             
-            trace6 = {x:xArray6, y:yArray6, xaxis: 'x6', yaxis: 'y6', mode:"markers"},
-            {x:xValues6, y:yValues6, xaxis: 'x6', yaxis: 'y6', mode:"line"}];
+            trace6 = {x:xArray6, y:yArray6, xaxis: 'x6', yaxis: 'y6', mode:"markers", name: "Data points for Men: Years Coding Vs. Salary"},
+            {x:xValues6, y:yValues6, xaxis: 'x6', yaxis: 'y6', mode:"line", name: "Linear Regression Trendline for Women: Years Coding vs: Salary"}];
   
   // // Define Layout
   // var layout = {
@@ -236,6 +236,36 @@ var data = [trace1 = {x:xArray, y:yArray, xaxis: 'x', yaxis: 'y', mode:"markers"
 
   var layout = {
     grid: {rows: 3, columns: 3, pattern: 'independent'},
+    autosize: false,
+   width: 1500,
+   height: 1500,
+   annotations: [{
+    text: "Women: Age Vs. Salary",
+      font: {
+      size: 16,
+	   color: 'green',
+    },
+    showarrow: false,
+    align: 'center',
+    x: 0.025,
+    y: 1,
+    xref: 'paper',
+    yref: 'paper',
+  },
+    {
+        text: "Men: Age Vs. Salary",
+      font: {
+      size: 16,
+      color: 'orange',
+    },
+    showarrow: false,
+    align: 'center',
+    x: 0.5,
+    y: 1,
+    xref: 'paper',
+    yref: 'paper',
+    }
+  ]
   
   };  
   

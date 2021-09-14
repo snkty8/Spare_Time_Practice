@@ -1,183 +1,51 @@
-var xArray = women.map(row => row.Age);
-var yArray = women.map(row => row.Salary);
-var xArray2 = men.map(row => row.Age);
-var yArray2 = men.map(row => row.Salary);
-var xArray3 = women.map(row => row.Formal_Education);
-var yArray3 = women.map(row => row.Salary);
-var xArray4 = men.map(row => row.Formal_Education);
-var yArray4 = men.map(row => row.Salary);
-var xArray5 = women.map(row => row.Years_Coding);
-var yArray5 = women.map(row => row.Salary);
-var xArray6 = men.map(row => row.Years_Coding);
-var yArray6 = men.map(row => row.Salary);
+// Intercept and Coeffs were found using sklearn in pandas 
+Women_Intercept = -32201.72846527167;
+W_Age_Coeff = 1632.77211965;
+W_Education_Coeff = 5731.59056211;
+W_Coding_Coeff = -78.53633802;
 
-// Calculate Sums
-var xSum=0, ySum=0 , xxSum=0, xySum=0;
-var count = xArray.length;
-for (var i = 0, len = count; i < count; i++) {
-  xSum += xArray[i];
-  ySum += yArray[i];
-  xxSum += xArray[i] * xArray[i];
-  xySum += xArray[i] * yArray[i];
-}
+// Women_Salary = (Women_Intercept + (AGE * Age_Coeff) + (Education * Education_Coeff) + (Coding * Coding_Coeff))
 
-var xSum2=0, ySum2=0 , xxSum2=0, xySum2=0;
-var count2 = xArray2.length;
-for (var i = 0, len = count2; i < count2; i++) {
-  xSum2 += xArray2[i];
-  ySum2 += yArray2[i];
-  xxSum2 += xArray2[i] * xArray2[i];
-  xySum2 += xArray2[i] * yArray2[i];
-}
-
-var xSum3=0, ySum3=0 , xxSum3=0, xySum3=0;
-var count3 = xArray3.length;
-for (var i = 0, len = count3; i < count3; i++) {
-  xSum3 += xArray3[i];
-  ySum3 += yArray3[i];
-  xxSum3 += xArray3[i] * xArray3[i];
-  xySum3 += xArray3[i] * yArray3[i];
-}
-
-var xSum4=0, ySum4=0 , xxSum4=0, xySum4=0;
-var count4 = xArray4.length;
-for (var i = 0, len = count4; i < count4; i++) {
-  xSum4 += xArray4[i];
-  ySum4 += yArray4[i];
-  xxSum4 += xArray4[i] * xArray4[i];
-  xySum4 += xArray4[i] * yArray4[i];
-}
-
-var xSum5=0, ySum5=0 , xxSum5=0, xySum5=0;
-var count5 = xArray5.length;
-for (var i = 0, len = count5; i < count5; i++) {
-  xSum5 += xArray5[i];
-  ySum5 += yArray5[i];
-  xxSum5 += xArray5[i] * xArray5[i];
-  xySum5 += xArray5[i] * yArray5[i];
-}
-
-var xSum6=0, ySum6=0 , xxSum6=0, xySum6=0;
-var count6 = xArray6.length;
-for (var i = 0, len = count6; i < count6; i++) {
-  xSum6 += xArray6[i];
-  ySum6 += yArray6[i];
-  xxSum6 += xArray6[i] * xArray6[i];
-  xySum6 += xArray6[i] * yArray6[i];
-}
-
-
-// Calculate slope and intercept
-var slope = (count * xySum - xSum * ySum) / (count * xxSum - xSum * xSum);
-var intercept = (ySum / count) - (slope * xSum) / count;
-
-// Calculate slope and intercept
-var slope2 = (count2 * xySum2 - xSum2 * ySum2) / (count2 * xxSum2 - xSum2 * xSum2);
-var intercept2 = (ySum2 / count2) - (slope2 * xSum2) / count2;
-
-// Calculate slope and intercept
-var slope3 = (count3 * xySum3 - xSum3 * ySum3) / (count3 * xxSum3 - xSum3 * xSum3);
-var intercept3 = (ySum3 / count3) - (slope3 * xSum3) / count3;
-
-// Calculate slope and intercept
-var slope4 = (count4 * xySum4 - xSum4 * ySum4) / (count4 * xxSum4 - xSum4 * xSum4);
-var intercept4 = (ySum4 / count4) - (slope4 * xSum4) / count4;
-
-// Calculate slope and intercept
-var slope5 = (count5 * xySum5 - xSum5 * ySum5) / (count5 * xxSum5 - xSum5 * xSum5);
-var intercept5 = (ySum5 / count5) - (slope5 * xSum5) / count5;
-
-// Calculate slope and intercept
-var slope6 = (count6 * xySum6 - xSum6 * ySum6) / (count6 * xxSum6 - xSum6 * xSum6);
-var intercept6 = (ySum6 / count6) - (slope6 * xSum6) / count6;
-
-
-// Generate values
-var xValues = [];
-var yValues = [];
-for (var x = 20; x <= 60; x += 1) {
-  xValues.push(x);
-  yValues.push(x * slope + intercept);
-}
-
-// Generate values
-var xValues2 = [];
-var yValues2 = [];
-for (var x = 20; x <= 60; x += 1) {
-  xValues2.push(x);
-  yValues2.push(x * slope2 + intercept2);
-}
-
-// Generate values
-var xValues3 = [];
-var yValues3 = [];
-for (var x = 4; x <= 6; x += 1) {
-  xValues3.push(x);
-  yValues3.push(x * slope3 + intercept3);
-}
-
-// Generate values
-var xValues4 = [];
-var yValues4 = [];
-for (var x = 4; x <= 6; x += 1) {
-  xValues4.push(x);
-  yValues4.push(x * slope4 + intercept4);
-}
-
-// Generate values
-var xValues5 = [];
-var yValues5 = [];
-for (var x = 2; x <= 15; x += 1) {
-  xValues5.push(x);
-  yValues5.push(x * slope5 + intercept5);
-}
-
-// Generate values
-var xValues6 = [];
-var yValues6 = [];
-for (var x = 2; x <= 15; x += 1) {
-  xValues6.push(x);
-  yValues6.push(x * slope6 + intercept6);
-}
-
-Women_Intercept = -32201.72846527167
-Women_Intercept_1 = -9057.222775421404
-Women_Intercept_2 = -151174.8460971468
-Women_Intercept_3 = 615.1427390218159
-//Intercept was calculated using SKLearn 
-
-// Women_Salary = (Women_Intercept + (slope * Age) + (slope3 * Formal_Education) + (slope5 * Years_Coding)).round
-
-Men_Intercept = -67770.4963152595
-//Intercept was calculated using SKLearn 
-
-// Men_Salary = (Men_Intercept + (slope2 * Age) + (slope4 * Formal_Education) + (slope6 * Years_Coding)).round
+// Intercept and Coeffs were found using sklearn in pandas 
+Men_Intercept = -17339.256208534753
+M_Age_Coeff = 39.89848239;
+M_Education_Coeff = 5020.14870238;
+M_Coding_Coeff = 6415.19448554;
 
 
 function calculateSalary()
 {
-  let unit_salary={
-    Age: slope,
-    Formal_Education: slope3,
-    Years_Coding: slope5,  
-  };
-  let salary={}
   
-  salary.Age = ($("#qty_age").val() * 1632.77211965)
-  $("#unit_Age").val(salary.Age);
+  let W_salary={};
+  let M_salary={};
   
-  salary.Formal_Education = ($("#qty_education").val() * 5731.59056211)
-  $("#unit_education").val(salary.Formal_Education);
+  // Women Prediction
+  W_salary.Age = ($("#qty_age").val() * W_Age_Coeff)
+  $("#unit_Age").val(W_salary.Age);
   
-  salary.Years_Coding = ($("#qty_coding").val() * -78.53633802)
-  $("#unit_coding").val(salary.Years_Coding);  
+  W_salary.Formal_Education = ($("#qty_education").val() * W_Education_Coeff)
+  $("#unit_education").val(W_salary.Formal_Education);
+  
+  W_salary.Years_Coding = ($("#qty_coding").val() * W_Coding_Coeff)
+  $("#unit_coding").val(W_salary.Years_Coding);
+  
+  // Men Prediction
+  M_salary.Age = ($("#qty_age").val() * M_Age_Coeff)
+  $("#unit_Age").val(M_salary.Age);
+  
+  M_salary.Formal_Education = ($("#qty_education").val() * M_Education_Coeff)
+  $("#unit_education").val(M_salary.Formal_Education);
+  
+  M_salary.Years_Coding = ($("#qty_coding").val() * M_Coding_Coeff)
+  $("#unit_coding").val(M_salary.Years_Coding);
   
   
-  let Salary_Prediction = Women_Intercept + salary.Age + salary.Formal_Education + salary.Years_Coding;
-  
+  let Women_Salary_Prediction = Women_Intercept + W_salary.Age + W_salary.Formal_Education + W_salary.Years_Coding;
+  let Men_Salary_Prediction = Men_Intercept + M_salary.Age + M_salary.Formal_Education + M_salary.Years_Coding;
+
  
-  $("#total_value").text(Math.round(Salary_Prediction));
-  
+  $("#total_value1").text(Math.round(Women_Salary_Prediction));
+  $("#total_value2").text(Math.round(Men_Salary_Prediction));
 }
 
 $(function()
